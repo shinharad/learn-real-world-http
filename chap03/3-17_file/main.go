@@ -8,8 +8,10 @@ import (
 
 // ローカルファイルにアクセスするfileスキーマを有効化する
 func main() {
+
 	transport := &http.Transport{}
 	transport.RegisterProtocol("file", http.NewFileTransport(http.Dir(".")))
+
 	client := http.Client{
 		Transport: transport,
 	}
@@ -17,9 +19,11 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
 	dump, err := httputil.DumpResponse(resp, true)
 	if err != nil {
 		panic(err)
 	}
 	log.Println(string(dump))
+
 }
