@@ -13,7 +13,7 @@ import (
 func handlerUpgrade(w http.ResponseWriter, r *http.Request) {
 
 	// このエンドポイントでは変更以外受け付けない
-	if r.Header.Get("Connect") != "Upgrade" || r.Header.Get("Upgrade") != "MyProtocol" {
+	if r.Header.Get("Connection") != "Upgrade" || r.Header.Get("Upgrade") != "MyProtocol" {
 		w.WriteHeader(400)
 		return
 	}
